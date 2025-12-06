@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using QobPalisade.Source.Utils;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
@@ -110,9 +111,7 @@ public class PalisadeLowerBlock : PalisadeBlock
         }
 
         BlockSelection selCopy = blockSel.Clone();
-        selCopy.Position.X -= selCopy.Face.Normali.X;
-        selCopy.Position.Y -= selCopy.Face.Normali.Y;
-        selCopy.Position.Z -= selCopy.Face.Normali.Z;
+        selCopy.Position.OffsetOpposite(selCopy.Face);
         if (world.BlockAccessor.GetBlock(selCopy.Position).Class != Class)
         {
             return blockSel;

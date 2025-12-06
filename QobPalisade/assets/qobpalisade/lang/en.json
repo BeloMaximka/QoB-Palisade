@@ -1,5 +1,6 @@
 {
   "game:placefailure-cannot-stack-more": "Can stack only 2 blocks above",
   "game:interactionhelp-palisade-sharpen": "Sharpen",
-  "game:interactionhelp-palisade-remove-rope": "Remove rope"
+  "game:interactionhelp-palisade-remove-rope": "Remove rope",
+  "game:interactionhelp-palisade-remove-spikes": "Remove spikes"
 }

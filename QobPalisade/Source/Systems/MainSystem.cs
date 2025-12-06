@@ -21,8 +21,10 @@ public class MainSystem : ModSystem
     {
         api.RegisterBlockClass(nameof(PalisadeBlock), typeof(PalisadeBlock));
         api.RegisterBlockClass(nameof(PalisadeLowerBlock), typeof(PalisadeLowerBlock));
+        api.RegisterBlockClass(nameof(PalisadeLowerSpikedBlock), typeof(PalisadeLowerSpikedBlock));
         api.RegisterBlockClass(nameof(PalisadeTopBlock), typeof(PalisadeTopBlock));
         api.RegisterBlockClass(nameof(PalisadeTopRopedBlock), typeof(PalisadeTopRopedBlock));
+        api.RegisterBlockClass(nameof(PalisadeStakesBlock), typeof(PalisadeStakesBlock));
     }
 
     public override void Dispose()

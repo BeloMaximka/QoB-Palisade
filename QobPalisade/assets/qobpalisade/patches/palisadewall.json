@@ -4,6 +4,7 @@
     "path": "/classbytype",
     "value": {
       "*-lower-*": "PalisadeLowerBlock",
+      "*-lowerspiked-*": "PalisadeLowerSpikedBlock",
       "*-top-*": "PalisadeTopBlock",
       "*-toproped-*": "PalisadeTopRopedBlock",
       "*": "PalisadeBlock"

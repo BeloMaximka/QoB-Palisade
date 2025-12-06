@@ -1,0 +1,22 @@
+[
+  {
+    "op": "add",
+    "path": "/class",
+    "value": "PalisadeStakesBlock",
+    "file": "game:blocktypes/wood/palisadestakes.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/drops",
+    "value": [
+      {
+        "type": "item",
+        "code": "game:firewood",
+        "quantity": { "avg": 4 }
+      }
+    ],
+    "file": "game:blocktypes/wood/palisadestakes.json",
+    "side": "Server"
+  }
+]
