@@ -11,6 +11,7 @@ public class PalisadeLowerBlock : PalisadeBlock
     private const int MaxHeight = 2;
     public const string SharpenSound = "sounds/block/chop";
     public const string SharpenInteractionCode = "interactionhelp-palisade-sharpen";
+    public const string AddStakesInteractionCode = "interactionhelp-palisade-add-stakes";
     private Block? topBlock;
 
     public override void OnLoaded(ICoreAPI api)
@@ -39,29 +40,56 @@ public class PalisadeLowerBlock : PalisadeBlock
 
     public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
     {
-        if (world.BlockAccessor.GetBlockAbove(selection.Position).Code.Path.StartsWithOrdinal("palisade"))
+        WorldInteraction[] result = [];
+        if (!world.BlockAccessor.GetBlockAbove(selection.Position).Code.Path.StartsWithOrdinal("palisade"))
         {
-            return [];
+            result = ObjectCacheUtil.GetOrCreate<WorldInteraction[]>(
+                world.Api,
+                SharpenInteractionCode,
+                () =>
+                {
+                    ItemStack[] axes = [.. world.SearchItems("axe*").Select(item => new ItemStack(item))];
+                    return
+                    [
+                        new()
+                        {
+                            Itemstacks = axes,
+                            ActionLangCode = SharpenInteractionCode,
+                            MouseButton = EnumMouseButton.Right,
+                            HotKeyCode = "shift",
+                        },
+                    ];
+                }
+            );
         }
 
-        return ObjectCacheUtil.GetOrCreate<WorldInteraction[]>(
-            world.Api,
-            SharpenInteractionCode,
-            () =>
-            {
-                ItemStack[] axes = [.. world.SearchItems("axe*").Select(item => new ItemStack(item))];
-                return
-                [
-                    new()
+        if (!world.BlockAccessor.GetBlockBelow(selection.Position).Code.Path.StartsWithOrdinal("palisade"))
+        {
+            result =
+            [
+                .. result,
+                .. ObjectCacheUtil.GetOrCreate<WorldInteraction[]>(
+                    world.Api,
+                    AddStakesInteractionCode,
+                    () =>
                     {
-                        Itemstacks = axes,
-                        ActionLangCode = SharpenInteractionCode,
-                        MouseButton = EnumMouseButton.Right,
-                        HotKeyCode = "shift",
-                    },
-                ];
-            }
-        );
+                        Block? block = world.GetBlock("palisadestakes-west");
+                        ItemStack[] itemStacks = block is not null ? [new(block)] : [];
+                        return
+                        [
+                            new()
+                            {
+                                Itemstacks = itemStacks,
+                                ActionLangCode = AddStakesInteractionCode,
+                                MouseButton = EnumMouseButton.Right,
+                            },
+                        ];
+                    }
+                ),
+            ];
+        }
+
+        return result;
     }
 
     public override bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref string failureCode)
@@ -112,7 +140,8 @@ public class PalisadeLowerBlock : PalisadeBlock
 
         BlockSelection selCopy = blockSel.Clone();
         selCopy.Position.OffsetOpposite(selCopy.Face);
-        if (world.BlockAccessor.GetBlock(selCopy.Position).Class != Class)
+        Block block = world.BlockAccessor.GetBlock(selCopy.Position);
+        if (block.Class != Class && block.Class != nameof(PalisadeLowerSpikedBlock))
         {
             return blockSel;
         }

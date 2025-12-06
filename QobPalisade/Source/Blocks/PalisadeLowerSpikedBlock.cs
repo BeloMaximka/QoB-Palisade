@@ -42,7 +42,7 @@ public class PalisadeLowerSpikedBlock : PalisadeBlock
 
     public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
     {
-        string interactionCode = "interactionhelp-palisade-remove-spikes";
+        string interactionCode = "interactionhelp-palisade-remove-stakes";
         return ObjectCacheUtil.GetOrCreate<WorldInteraction[]>(
             world.Api,
             interactionCode,
