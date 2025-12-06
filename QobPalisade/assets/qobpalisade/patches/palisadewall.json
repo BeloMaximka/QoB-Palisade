@@ -1,0 +1,13 @@
+[
+  {
+    "op": "add",
+    "path": "/classbytype",
+    "value": {
+      "*-lower-*": "PalisadeLowerBlock",
+      "*-top-*": "PalisadeTopBlock",
+      "*-toproped-*": "PalisadeTopRopedBlock"
+    },
+    "file": "game:blocktypes/wood/palisadewall.json",
+    "side": "Server"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "tool": {
+    "type": "item",
+    "code": "game:firewood"
+  },
+  "replaceDrops": true,
+  "ingredients": [
+    {
+      "type": "item",
+      "code": "game:firewood",
+      "quantity": 7
+    }
+  ],
+  "output": {
+    "type": "block",
+    "code": "game:palisadewall-four-lower-cornerout-west"
+  }
+}

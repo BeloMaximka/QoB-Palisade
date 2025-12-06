@@ -1,0 +1,14 @@
+{
+  "type": "code",
+  "modid": "qobpalisade",
+  "name": "QoB: Palisade",
+  "authors": [
+    "BeloMaximka"
+  ],
+  "description": "U wan 'em, u build 'em",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.21.0",
+    "qualityofbuilding": "1.1.0"
+  }
+}
