@@ -5,7 +5,68 @@
     "value": {
       "*-lower-*": "PalisadeLowerBlock",
       "*-top-*": "PalisadeTopBlock",
-      "*-toproped-*": "PalisadeTopRopedBlock"
+      "*-toproped-*": "PalisadeTopRopedBlock",
+      "*": "PalisadeBlock"
+    },
+    "file": "game:blocktypes/wood/palisadewall.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/dropsbytype",
+    "value": {
+      "*-cornerin-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 1 }
+        }
+      ],
+      "*-cornerout-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 7 }
+        }
+      ],
+      "*-three-toproped-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 3 }
+        },
+        {
+          "type": "item",
+          "code": "game:flaxfibers",
+          "quantity": { "avg": 1 }
+        }
+      ],
+      "*-three-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 3 }
+        }
+      ],
+      "*-four-toproped-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 4 }
+        },
+        {
+          "type": "item",
+          "code": "game:flaxfibers",
+          "quantity": { "avg": 1 }
+        }
+      ],
+      "*-four-*": [
+        {
+          "type": "item",
+          "code": "game:firewood",
+          "quantity": { "avg": 4 }
+        }
+      ]
     },
     "file": "game:blocktypes/wood/palisadewall.json",
     "side": "Server"

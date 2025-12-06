@@ -19,6 +19,7 @@ public class MainSystem : ModSystem
 
     public override void Start(ICoreAPI api)
     {
+        api.RegisterBlockClass(nameof(PalisadeBlock), typeof(PalisadeBlock));
         api.RegisterBlockClass(nameof(PalisadeLowerBlock), typeof(PalisadeLowerBlock));
         api.RegisterBlockClass(nameof(PalisadeTopBlock), typeof(PalisadeTopBlock));
         api.RegisterBlockClass(nameof(PalisadeTopRopedBlock), typeof(PalisadeTopRopedBlock));

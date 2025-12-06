@@ -5,7 +5,7 @@ using Vintagestory.API.Util;
 
 namespace QobPalisade.Source.Blocks;
 
-public class PalisadeLowerBlock : Block
+public class PalisadeLowerBlock : PalisadeBlock
 {
     private const int MaxHeight = 2;
     public const string SharpenSound = "sounds/block/chop";
@@ -14,6 +14,8 @@ public class PalisadeLowerBlock : Block
 
     public override void OnLoaded(ICoreAPI api)
     {
+        base.OnLoaded(api);
+
         topBlock = api.World.GetBlock(Code.Path.Replace("lower", "top"));
     }
 

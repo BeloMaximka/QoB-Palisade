@@ -5,13 +5,15 @@ using Vintagestory.API.Util;
 
 namespace QobPalisade.Source.Blocks;
 
-public class PalisadeTopBlock : Block
+public class PalisadeTopBlock : PalisadeBlock
 {
     private Block? halfTop;
     private Block? topRoped;
 
     public override void OnLoaded(ICoreAPI api)
     {
+        base.OnLoaded(api);
+
         halfTop = api.World.GetBlock(Code.Path.Replace("top", "halftop"));
         topRoped = api.World.GetBlock(Code.Path.Replace("top", "toproped"));
     }

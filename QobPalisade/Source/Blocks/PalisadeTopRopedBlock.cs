@@ -4,7 +4,7 @@ using Vintagestory.API.Util;
 
 namespace QobPalisade.Source.Blocks;
 
-internal class PalisadeTopRopedBlock : Block
+internal class PalisadeTopRopedBlock : PalisadeBlock
 {
     private Block? top;
     private Item? rope;
@@ -13,6 +13,8 @@ internal class PalisadeTopRopedBlock : Block
 
     public override void OnLoaded(ICoreAPI api)
     {
+        base.OnLoaded(api);
+
         string topBlockCode = Code.Path.Replace("toproped", "top");
         top = api.World.GetBlock(Code.Path.Replace("toproped", "top"));
         if (top is null)
