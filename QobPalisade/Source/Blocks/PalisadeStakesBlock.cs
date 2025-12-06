@@ -9,7 +9,10 @@ public class PalisadeStakesBlock : PalisadeBlock
 {
     public override bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref string failureCode)
     {
-        if (CanAttachSpikes(world, byPlayer, blockSel))
+        if (
+            world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)
+            && CanAttachSpikes(world, byPlayer, blockSel)
+        )
         {
             return true;
         }
@@ -36,7 +39,10 @@ public class PalisadeStakesBlock : PalisadeBlock
         ref string failureCode
     )
     {
-        if (CanAttachSpikes(world, byPlayer, blockSel))
+        if (
+            world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)
+            && CanAttachSpikes(world, byPlayer, blockSel)
+        )
         {
             blockSel.Position.OffsetOpposite(blockSel.Face);
             return ReplacePalisadeLowerWithSpikedVersion(world, blockSel.Position);

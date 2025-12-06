@@ -20,7 +20,7 @@ public class PalisadeTopBlock : PalisadeBlock
 
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
-        if (!byPlayer.Entity.Controls.ShiftKey)
+        if (!byPlayer.Entity.Controls.ShiftKey || !world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
         {
             return false;
         }

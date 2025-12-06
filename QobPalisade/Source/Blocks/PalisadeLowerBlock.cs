@@ -28,6 +28,7 @@ public class PalisadeLowerBlock : PalisadeBlock
             && byPlayer.Entity.Controls.ShiftKey
             && byPlayer.InventoryManager.ActiveTool == EnumTool.Axe
             && !world.BlockAccessor.GetBlockAbove(blockSel.Position).Code.Path.StartsWithOrdinal("palisade")
+            && world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)
         )
         {
             world.PlaySoundAt(SharpenSound, blockSel.Position, 0, byPlayer);

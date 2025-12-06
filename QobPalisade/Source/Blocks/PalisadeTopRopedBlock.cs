@@ -31,7 +31,12 @@ internal class PalisadeTopRopedBlock : PalisadeBlock
 
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
-        if (rope is not null && top is not null && byPlayer.Entity.Controls.ShiftKey)
+        if (
+            rope is not null
+            && top is not null
+            && byPlayer.Entity.Controls.ShiftKey
+            && world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)
+        )
         {
             world.BlockAccessor.SetBlock(top.Id, blockSel.Position);
             byPlayer.InventoryManager.TryGiveItemstack(new(rope), true);

@@ -25,6 +25,7 @@ public class PalisadeLowerSpikedBlock : PalisadeBlock
             && lowerBlock is not null
             && byPlayer.Entity.Controls.ShiftKey
             && byPlayer.InventoryManager.ActiveTool == EnumTool.Axe
+            && world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)
         )
         {
             world.PlaySoundAt(PalisadeLowerBlock.SharpenSound, blockSel.Position, 0, byPlayer);
